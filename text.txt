@@ -1,2 +1,3 @@
 https://data.mendeley.com/datasets/tywbtsjrjv/1/files/b4e3a32f-c0bd-4060-81e9-6144231f2520 (Link to datasets)
 The program is run and routed through flask. just open the terminal and type python app.py and youre done
+link to the model (https://drive.google.com/file/d/1Ond7UzrNOfdAXWedjlZr2sDXYU6MRBuj/view)
