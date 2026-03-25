@@ -1,3 +1,75 @@
 https://data.mendeley.com/datasets/tywbtsjrjv/1/files/b4e3a32f-c0bd-4060-81e9-6144231f2520 (Link to datasets)
 The program is run and routed through flask. just open the terminal and type python app.py and youre done
 link to the model (https://drive.google.com/file/d/1Ond7UzrNOfdAXWedjlZr2sDXYU6MRBuj/view)
+
+ 🌱 Project Overview
+This web application uses a **deep learning model** (TensorFlow/Keras) to detect and diagnose diseases in plant leaves from uploaded images.  
+It was built as a final-year project for **Group 13** at the University of Nnamdi Azikiwe (UNINIZ).
+
+**Key Features:**
+- Beautiful, mobile-friendly upload interface
+- Real-time disease prediction with confidence score
+- Shows disease cause and recommended treatment/action
+- Responsive design (works perfectly on phone and laptop)
+- Fast inference using a pre-trained model
+
+
+### 🛠️ Tech Stack
+- Backend: Flask (Python)
+- Deep Learning: TensorFlow 2.21 + Keras
+- Model: Pre-trained CNN (Transfer Learning on PlantVillage dataset)
+- Frontend: HTML5 + CSS3 (modern glassmorphic design)
+- Image Processing: Pillow + NumPy
+- Deployment: Local / Can be hosted on Render, Railway, or Vercel
+
+🚀 How to Launch the Program (Step-by-Step)
+1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/plant-disease-detection.git
+cd plant-disease-detection
+
+3. Install Dependencies
+PowerShellpip install -r requirements.txt
+
+4. Run the Application
+PowerShellpython app.py
+
+5. Access from Phone (Same Wi-Fi)
+
+On your laptop run:PowerShellpython app.py
+Find your laptop IP: ipconfig → look for IPv4 Address
+On phone browser type: http://YOUR_LAPTOP_IP:5000
+
+Tip: To allow phone access automatically, the code already uses host='0.0.0.0'.
+
+.
+
+📖 How the Codes Work (Detailed Explanation)
+1. app.py (Main Backend)
+
+Loads the pre-trained Keras model (model/plant_disease_model.h5)
+Creates Flask routes:
+/ → serves the upload page
+/predict → receives image → preprocesses → runs model → returns disease name, confidence %, cause, and recommended action
+
+Uses Pillow to handle uploaded images and resize them to 224×224 (model input size)
+Saves temporary image in uploads/ folder
+
+2. templates/index.html
+
+Clean upload form with "Choose file" + "Analyze Image" button
+Live image preview
+Beautiful result card that appears after prediction (shows leaf image + diagnosis)
+
+3. static/css/style.css
+
+Modern glassmorphic design with backdrop blur
+Responsive layout (mobile + desktop)
+We specifically added extra bottom padding (padding-bottom: 4.5rem + margin-bottom: 2.5rem !important) so the "Recommended Action" section is never cut off.
+
+4. The Deep Learning Model
+
+Trained on the PlantVillage dataset (54,000+ images, 38 classes)
+Uses Transfer Learning (MobileNetV2 or ResNet50) for high accuracy (~95–97%)
+Model outputs class name + confidence percentage
+Post-processing maps class to human-readable disease name, cause, and treatment (hard-coded in app.py)
